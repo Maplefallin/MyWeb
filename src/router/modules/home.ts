@@ -8,7 +8,7 @@ const route:Array<RouteRecordRaw>=[
     {
         path:'/',
         name:'',
-        redirect:'/home',
+        redirect:'/login',
         meta:{
             title:''
         }

@@ -1,5 +1,5 @@
 import { createRouter,createWebHashHistory,RouteRecordRaw } from "vue-router";
-
+import { permissonSetUp } from './permission'
 export const routerSetup=()=>{
     const routes = import.meta.glob("./modules/*.ts",{eager:true})
     const routeList :Array<RouteRecordRaw> = []
@@ -17,5 +17,6 @@ export const routerSetup=()=>{
         routes:routeList
     })
 
+    permissonSetUp(router)
     return router 
 }
