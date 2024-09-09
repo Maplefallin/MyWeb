@@ -1,16 +1,15 @@
 import {reactive} from 'vue' 
 
-interface FormState {
+interface loginFormState {
     username: string;
     password: string;
-    remember: boolean;
+    
   }
   
-  const formState = reactive<FormState>({
+  const formState = reactive<loginFormState>({
     username: '',
     password: '',
-    remember: true,
   });
 
 
-  export {type FormState,formState}
+  export {type loginFormState,formState}

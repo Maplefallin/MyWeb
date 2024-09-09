@@ -25,10 +25,10 @@
         <a-input-password v-model:value="formState.password" />
       </a-form-item>
   
-      <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
+      <!-- <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
         <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
       </a-form-item>
-  
+   -->
       <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
         <a-button type="primary" html-type="submit">Submit</a-button>
       </a-form-item>
@@ -36,14 +36,27 @@
   </template>
   <script lang="ts" setup>
   import { reactive } from 'vue';
-  import{type FormState,formState}from "@/views/login/LoginSetUp/loginInterface"
+  import{type loginFormState,formState}from "@/views/login/LoginSetUp/loginInterface"
   import { useRouter } from 'vue-router';
-  
+  import { loginServie } from '@/api/user';
+import { log } from 'console';
+
   const router = useRouter();
-  const onFinish = (values: any) => {
-    router.push("/home")
+  const onFinish = async(values: any) => {
+    
+    const result = await loginServie(formState)
+    if(result.data.code === 0){
+      alert("登录成功")
+      localStorage.setItem("token",`Bear ${result.data.data.token}`)
+      router.push("/home")
+    }else{
+      alert("该账户不存在")
+    }
+      console.log(result);
+      
+    
   };
-  
+
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
