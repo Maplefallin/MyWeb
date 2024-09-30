@@ -39,12 +39,13 @@
   import{type loginFormState,formState}from "@/views/login/LoginSetUp/loginInterface"
   import { useRouter } from 'vue-router';
   import { loginServie } from '@/api/user';
-import { log } from 'console';
+  import { log } from 'console';
 
   const router = useRouter();
   const onFinish = async(values: any) => {
     
     const result = await loginServie(formState)
+    console.log(result);
     if(result.data.code === 0){
       alert("登录成功")
       localStorage.setItem("token",`Bear ${result.data.data.token}`)
