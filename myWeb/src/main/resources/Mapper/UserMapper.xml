@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maple.myweb.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.maple.myweb.pojo.User">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="nickname" column="nickname" />
+        <result property="email" column="email" />
+        <result property="userPic" column="user_pic" />
+        <result property="createTime" column="create_time" />
+        <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <select id="findByUserName" resultMap="UserResultMap">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
+
+    <insert id="add">
+        INSERT INTO user (username, password,create_time,update_time) VALUES (#{username}, #{password},now(),now())
+    </insert>
+
+</mapper>
