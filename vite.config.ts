@@ -12,7 +12,7 @@ export default defineConfig({
     open: true,
     proxy:{
       '/api':{
-        target:"http://127.0.0.1:4523/m1/5091463-4753819-default",//真正浏览器代理发送的端口
+        target:"http://127.0.0.1:8888",//真正浏览器代理发送的端口
         changeOrigin:true,
         rewrite:(path) =>path.replace(/^\/api/,'')//将api替换为空串      
       }

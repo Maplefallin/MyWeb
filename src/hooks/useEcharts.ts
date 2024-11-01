@@ -7,7 +7,7 @@ import {
     onBeforeUnmount,
   } from "vue";
   
-  //@ts-ignore
+  //@ts-ignore   
   import echarts from "@/components/baseEcharts/config";
   
   export type EChartsCoreOption = echarts.EChartsCoreOption;

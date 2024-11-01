@@ -1,6 +1,7 @@
 import instance from "@/utils/axios/AxiosConfig";
 import {type loginFormState} from "@/views/login/LoginSetUp/loginInterface"
-import { log } from "console";
+import { FormState } from "@/views/login/RegisterSetUp/RegisterInterface";
+
 
 export const loginServie=( loginFrom:loginFormState )=>{
 
@@ -20,4 +21,19 @@ export const loginServie=( loginFrom:loginFormState )=>{
     })
 
     
+}
+
+export const registerService=( registerFrom:FormState)=>{
+    
+    const registerData = {
+        username : registerFrom.username,
+        password : registerFrom.pass
+    }
+
+    return instance({
+        method:"post",
+        url:"/user/register",
+        data:registerData
+    })
+
 }
